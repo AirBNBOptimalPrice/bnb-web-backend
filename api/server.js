@@ -16,7 +16,7 @@ server.use('/api/auth/', authRouter);
 
 //tesing server
 server.get('/', (req, res) => {
-    res.send(`running`)
+    res.send(`api is running`)
 })
 
 module.exports = server;
