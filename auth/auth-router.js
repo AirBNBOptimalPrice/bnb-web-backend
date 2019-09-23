@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const Users = require('../routes/user-model.js');
 const secrets = require('../config/secrets.js')
 
+//post register
 router.post('/register', (req, res) => {
   // implement registration
   let user = req.body;
@@ -20,6 +21,7 @@ router.post('/register', (req, res) => {
     })
 });
 
+//post login
 router.post('/login', (req, res) => {
   // implement login
   let { username, password }= req.body;
@@ -36,10 +38,20 @@ router.post('/login', (req, res) => {
     }
   })
   .catch(err => {
+    console.log(err)
     res.status(500).json({ message: `server 500 error ${err}`})
   })
 });
 
+//get logout
+router.get('/logout', (req, res) => {
+  req.session.destroy(err => {
+    console.log(err)
+    res.status(200).json({ message: 'goodbye'})
+  })
+})
+
+//generate token @login
 function generateToken(user) {
   const payload = {
     username: user.username,
@@ -47,7 +59,7 @@ function generateToken(user) {
   const options = {
     expiresIn: '1d',
   };
-  return jwt.sign(payload, secrets.jwtSecret, options);
+  return jwt.sign(payload, secrets.jwtSecrets, options);
 }
 
 module.exports = router;
