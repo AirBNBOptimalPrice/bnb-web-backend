@@ -35,6 +35,7 @@ router.delete('/:id', (req, res) => {
       }
     })
     .catch(err => {
+      console.log(err)
       res.status(500).json(err)
     })
 })
@@ -44,13 +45,13 @@ router.put('/:id', (req, res) => {
 
   Features.updateFeature(id, changes)
     .then( update => {
+      console.log('this is the update', update)
       if (update > 0) {
         Features.findById(id)
           .then(feature => {
             res.status(200).json(feature)
           })
       }else{
-        
         res.status(404).json('feature not found')
       }
     })

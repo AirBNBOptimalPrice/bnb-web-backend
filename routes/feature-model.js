@@ -30,9 +30,9 @@ function find() {
          )
 }
 
-function findById(filter) {
+function findById(id) {
     return db('features')
-    .where(filter);
+    .where('id', id);
 }
 
 async function addFeatures(features) {
@@ -51,4 +51,5 @@ function updateFeature(id , changes) {
     return db('features')
     .where({ id })
     .update(changes)
+    
 }
