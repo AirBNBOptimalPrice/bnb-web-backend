@@ -4,6 +4,8 @@ module.exports = {
     find,
     findById,
     addFeatures,
+    removeFeature, 
+    updateFeature,
 }
 
 function find() {
@@ -16,14 +18,15 @@ function find() {
         'accommodates',
         'bathrooms',
         'security_deposit',
-        'cleanning_fee',
+        'cleaning_fee',
         'guests_included',
         'extra_people',
         'minimum_nights',
         'instant_bookable',
         'cancellation_policy',
         'tv_cable',
-        'pets_allowed'
+        'pets_allowed',
+        'bedrooms'
          )
 }
 
@@ -32,8 +35,20 @@ function findById(filter) {
     .where(filter);
 }
 
-function addFeatures(features) {
+async function addFeatures(features) {
     return db('features')
-    .insert({ ...features })
-    // .then(([id]) => findById(id));
+    .insert(features, 'id')
+
+}
+
+async function removeFeature(id) {
+    return db('features')
+    .where({ id })
+    .del();
+}
+
+function updateFeature(id , changes) {
+    return db('features')
+    .where({ id })
+    .update(changes)
 }

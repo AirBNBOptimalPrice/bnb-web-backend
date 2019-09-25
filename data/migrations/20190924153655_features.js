@@ -24,13 +24,13 @@ exports.up = function(knex) {
             .string('accommodates')
             .notNullable();
         tbl
-            .integer('bathrooms')
+            .float('bathrooms')
             .notNullable()
         tbl
-            .integer('security_deposit')
+            .float('security_deposit')
             .notNullable()
         tbl
-            .integer('cleanning_fee')
+            .float('cleaning_fee')
             .notNullable()
 
         tbl
@@ -38,7 +38,7 @@ exports.up = function(knex) {
             .notNullable()
 
         tbl
-            .integer('extra_people')
+            .float('extra_people')
             .notNullable()
 
         tbl
@@ -61,6 +61,9 @@ exports.up = function(knex) {
             .boolean('pets_allowed')
             .notNullable()
             .defaultTo(false)
+        tbl
+            .integer('bedrooms')
+            .notNullable()
     })
     .createTable('user_id_features', tbl => {
         tbl.increments()
