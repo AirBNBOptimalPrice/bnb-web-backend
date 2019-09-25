@@ -6,7 +6,7 @@ const Users = require('./user-model.js');
 router.get('/', authenticate, (req, res) => {
     Users.find()
       .then(users => {
-        res.json({ users, features: features });
+        res.json({ users });
       })
       .catch(err => {
         console.log(err);
