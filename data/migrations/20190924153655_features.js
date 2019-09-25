@@ -21,7 +21,7 @@ exports.up = function(knex) {
             .string('property_type')
             .notNullable();
         tbl
-            .string('accommodates')
+            .integer('accommodates')
             .notNullable();
         tbl
             .float('bathrooms')
