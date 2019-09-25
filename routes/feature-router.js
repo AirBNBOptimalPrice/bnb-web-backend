@@ -45,7 +45,6 @@ router.put('/:id', (req, res) => {
 
   Features.updateFeature(id, changes)
     .then( update => {
-      console.log('this is the update', update)
       if (update > 0) {
         Features.findById(id)
           .then(feature => {
