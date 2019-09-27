@@ -18,7 +18,7 @@ server.use('/api/features/', featuresRouter)
 
 //tesing server
 server.get('/', (req, res) => {
-    res.send(`api is running`)
+    res.send('api is running')
 })
 
 module.exports = server;

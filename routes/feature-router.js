@@ -18,7 +18,6 @@ router.post('/add-features', (req, res) => {
   Features.addFeatures( features )
     .then(saved => {
       res.json({ saved })
-      console.log('this is what will be saved', saved)
     })
     .catch( err => {
       console.log(err);
